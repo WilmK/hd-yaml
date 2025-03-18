@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-spring-app-service
+  namespace: garbage
+spec:
+  type: LoadBalancer  # 클러스터 외부에서도 접근하려면 NodePort 또는 LoadBalancer 타입으로 변경하세요.
+    #loadBalancerIP: 10.10.152.13     # 원하는 IP
+  selector:
+    app: my-spring-app
+  ports:
+    - protocol: TCP
+      port: 8080         # 클라이언트가 접근할 포트
+      targetPort: 8080 # 컨테이너에서 사용하는 포트
+
